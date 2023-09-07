@@ -62,12 +62,16 @@ class User {
    * [{username, first_name, last_name, phone}, ...] */
 
   static async all() {
-    const results = await db.query(
-      `SELECT username, first_name, last_name, phone
-      FROM users
-      `
+    const result = await db.query(
+      `SELECT username,
+                first_name,
+                last_name,
+                phone
+            FROM users
+            ORDER BY username`
     )
-    return results.rows
+
+    return result.rows
   }
 
   /** Get: get user by username
